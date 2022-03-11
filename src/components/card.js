@@ -1,7 +1,6 @@
 const cE = (elemType) => document.createElement(elemType);
 const clAdd = (elemArray,classArray) => elemArray.forEach( (val,ind) => val.classList.add(classArray[ind]));
 
-
 const Card = (article) => {
   const { headline, authorPhoto, authorName } = article;
   const cardDiv = cE("div"), headlineDiv = cE("div"), authorDiv = cE("div"), imgDiv = cE("div");
@@ -31,15 +30,13 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
-// axios.get("http://localhost:5000/api/articles")
-// .then(result => document.body.appendChild(cE("p")).textContent = result.toString());
 
 const cardAppender = (selector) => {
   const getArticles = async (url) => {
     let data = await fetch(url);
     return data.json();
   }
-  getArticles("http://localhost:5000/api/articles").then(result => Object.values(result.articles).reduce( (a,b) => a.concat(b)).forEach(article => document.querySelector(selector).appendChild(Card(article))))//.reduce( (a,b) => a.concat(b))));
+  getArticles("http://localhost:5000/api/articles").then(result => Object.values(result.articles).reduce( (a,b) => a.concat(b)).forEach(article => document.querySelector(selector).appendChild(Card(article))));
 }
   // TASK 6
   // ---------------------
