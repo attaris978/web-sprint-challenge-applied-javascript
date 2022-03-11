@@ -1,4 +1,3 @@
-import axios from 'axios';
 const cE = (elemType) => document.createElement(elemType);
 const clAdd = (elemArray,classArray) => elemArray.forEach( (val,ind) => val.classList.add(classArray[ind]));
 
@@ -11,6 +10,7 @@ const Card = (article) => {
   cardDiv.appendChild(headlineDiv).textContent = `${headline}`;
   cardDiv.appendChild(authorDiv).appendChild(imgDiv).appendChild(cE("img")).src = `${authorPhoto}`;
   cardDiv.appendChild(cE("span")).textContent = `By ${authorName}`;
+  return cardDiv;
 }
 
   // TASK 5
@@ -31,17 +31,15 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
-axios.get("http://localhost:5000/api/articles")
-.then(result => document.body.appendChild(cE("p")).textContent = result.toString());
+// axios.get("http://localhost:5000/api/articles")
+// .then(result => document.body.appendChild(cE("p")).textContent = result.toString());
 
 const cardAppender = (selector) => {
-axios.get("http://localhost:5000/api/articles")
-.then(result => document.body.appendChild(cE("p")).textContent = result.toString())
-.then(window.alert("result"));
-//      {
-//     category.forEach(art => document.querySelector(selector).appendChild(Card(art)));
-//     } )
-//   } )
+  const getArticles = async (url) => {
+    let data = await fetch(url);
+    return data.json();
+  }
+  getArticles("http://localhost:5000/api/articles").then(result => Object.values(result.articles).reduce( (a,b) => a.concat(b)).forEach(article => document.querySelector(selector).appendChild(Card(article))))//.reduce( (a,b) => a.concat(b))));
 }
   // TASK 6
   // ---------------------

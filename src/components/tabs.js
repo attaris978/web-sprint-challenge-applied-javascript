@@ -25,14 +25,18 @@ const Tabs = (topics) => {
   //   <div class="tab">technology</div>
   // </div>
   //
-
+  // const tabsAppender = (selector) =>  {
+  //   axios.get("http://localhost:5000/api/topics").then(result => document.querySelector(selector).appendChild(Tabs(result.data)));
+  // }
+  
 
 const tabsAppender = (selector) =>  {
   const getTopics = async (url) => {
     let data = await fetch(url);
     return data.json();
+  
   }
-  getTopics("http://localhost:5000/api/topics").then(result => document.querySelector(selector).appendChild(Tabs(result)));
+  getTopics("http://localhost:5000/api/topics").then(result => document.querySelector(selector).appendChild(Tabs(result.topics)));
 }
   // TASK 4
   // ---------------------
