@@ -33,6 +33,12 @@ const Card = (article) => {
 
 
 const cardAppender = (selector) => {
+  const getArticles = async (url) => {
+    let data = await fetch(url);
+    return data.json();
+  }
+  getArticles("http://localhost:5000/api/articles").then(result => document.querySelector(selector).appendChild(Tabs(result)));
+}
   // TASK 6
   // ---------------------
   // Implement this function that takes a css selector as its only argument.
