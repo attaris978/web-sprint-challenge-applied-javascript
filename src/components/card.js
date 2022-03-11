@@ -1,4 +1,17 @@
+const cE = (elemType) => document.createElement(elemType);
+const clAdd = (elemArray,classArray) => elemArray.forEach( (val,ind) => val.classList.add(classArray[ind]));
+
+
 const Card = (article) => {
+  const { headline, authorPhoto, authorName } = article;
+  const cardDiv = cE("div"), headlineDiv = cE("div"), authorDiv = cE("div"), imgDiv = cE("div");
+  clAdd( [cardDiv, headlineDiv, authorDiv, imgDiv], ["card", "headline", "author", "img-container"]);
+  
+  cardDiv.appendChild(headlineDiv).textContent = `${headline}`;
+  cardDiv.appendChild(authorDiv).appendChild(imgDiv).appendChild(cE("img")).src = `${authorPhoto}`;
+  cardDiv.appendChild(cE("span")).textContent = `By ${authorName}`;
+}
+
   // TASK 5
   // ---------------------
   // Implement this function, which should return the markup you see below.
@@ -17,7 +30,7 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
-}
+
 
 const cardAppender = (selector) => {
   // TASK 6
