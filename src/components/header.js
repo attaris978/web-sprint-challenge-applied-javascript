@@ -4,9 +4,9 @@ const clAdd = (elemArray,classArray) => elemArray.forEach( (val,ind) => val.clas
 const Header = (title, date, temp) => {
   const headerDiv = cE("div"), dateSpan = cE("span"), tempSpan = cE("span");
   clAdd( [headerDiv, dateSpan, tempSpan], ["header", "date", "temp"]);
-  headerDiv.appendChild(dateSpan).textContent = "{ date }";
-  headerDiv.appendChild(cE("h1")).textContent = "{ title }";
-  headerDiv.appendChild(tempSpan);
+  headerDiv.appendChild(dateSpan).textContent = `${date}`;
+  headerDiv.appendChild(cE("h1")).textContent = `${title}`;
+  headerDiv.appendChild(tempSpan).textContent = `${temp}`;
   return headerDiv;
 }
 
