@@ -37,7 +37,11 @@ const cardAppender = (selector) => {
     let data = await fetch(url);
     return data.json();
   }
-  getArticles("http://localhost:5000/api/articles").then(result => document.querySelector(selector).appendChild(Tabs(result)));
+  getArticles("http://localhost:5000/api/articles").then(result => {
+    Object.entries(result).forEach(category => {
+    category.forEach(art => document.querySelector(selector).appendChild(Card(art)));
+    } )
+  } )
 }
   // TASK 6
   // ---------------------
@@ -47,6 +51,6 @@ const cardAppender = (selector) => {
   // Create a card from each and every article object in the response, using the Card component.
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
-}
+
 
 export { Card, cardAppender }
