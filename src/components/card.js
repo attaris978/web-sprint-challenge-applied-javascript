@@ -1,3 +1,4 @@
+import axios from 'axios';
 const cE = (elemType) => document.createElement(elemType);
 const clAdd = (elemArray,classArray) => elemArray.forEach( (val,ind) => val.classList.add(classArray[ind]));
 
@@ -30,18 +31,17 @@ const Card = (article) => {
   //   </div>
   // </div>
   //
-
+axios.get("http://localhost:5000/api/articles")
+.then(result => document.body.appendChild(cE("p")).textContent = result.toString());
 
 const cardAppender = (selector) => {
-  const getArticles = async (url) => {
-    let data = await fetch(url);
-    return data.json();
-  }
-  getArticles("http://localhost:5000/api/articles").then(result => {
-    Object.entries(result).forEach(category => {
-    category.forEach(art => document.querySelector(selector).appendChild(Card(art)));
-    } )
-  } )
+axios.get("http://localhost:5000/api/articles")
+.then(result => document.body.appendChild(cE("p")).textContent = result.toString())
+.then(window.alert("result"));
+//      {
+//     category.forEach(art => document.querySelector(selector).appendChild(Card(art)));
+//     } )
+//   } )
 }
   // TASK 6
   // ---------------------
