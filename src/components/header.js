@@ -1,4 +1,15 @@
+const cE = (elType) => document.createElement(elType);
+const clAdd = (elemArray,classArray) => elemArray.forEach( (val,ind) => val.classList.add(classArray[ind]));
+
 const Header = (title, date, temp) => {
+  const headerDiv = cE("div"), dateSpan = cE("span"), tempSpan = cE("span");
+  clAdd( [headerDiv, dateSpan, tempSpan], ["header", "date", "temp"]);
+  headerDiv.appendChild(dateSpan).textContent = "{ date }";
+  headerDiv.appendChild(cE("h1")).textContent = "{ title }";
+  headerDiv.appendChild(tempSpan);
+  return headerDiv;
+}
+
   // TASK 1
   // ---------------------
   // Implement this function taking `title`, `date` and `temp` as its 3 args and returning the markup below.
@@ -11,7 +22,7 @@ const Header = (title, date, temp) => {
   //    <span class="temp">{ temp }</span>
   //  </div>
   //
-}
+
 
 const headerAppender = (selector) => {
   // TASK 2
