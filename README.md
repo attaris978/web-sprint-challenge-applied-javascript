@@ -60,7 +60,12 @@ In meeting the minimum viable product (MVP) specifications listed below, your pr
 Demonstrate your understanding of this week's concepts by answering the following questions:
 
 1. What is the DOM?
+  The Document Object Model is the browser's conceptualization of the integration of HTML, CSS, and JS. These three components are parsed with the injection of data to produce a "live" creature capable of visual representation and interaction with both the user and external data sources (servers, etc.).   
 2. What is an event?
-3. What is an event listener?
+  The DOM can implement Event Listeners which "listen" (what else?) for any number of "events" and then assign an Event Handler function to respond with a specified reaction. The list of available possible events to listen for is extensive, but varies depending on the element the listener is being set on. A common example of such is a "click" event, where the user clicks on a particular part of the page. As elements in the DOM are are typically nested, this can create some confusion as to which element is actually being "clicked", as there are likely multiple layers of elements beneath the cursor at the time of the click. The DOM resolves this confusion using a three-step process:
+  
+    CAPTURING: of all the elements which exist in the DOM-space where the even occurred (in the case of the "click" event, this would be everything below the cursor at the time of the click, including the body and document element itself), the event capturing process starts at the outermost (the one in which all other events are nested). That element is checked for an appropriate eventListener and, if it finds one, checks if its third parameter (useCapture) is set to TRUE. If it is, it calls the specified Event Handler to process the event. The capture process subsequently moves inward, one element at a time, and checks for any additional Listeners which are set to trigger their Handler during the capture process. Eventually, the capture process lands on the innermost element that triggered the event.-- this is the event target, and is where Event Capturing ends.
+  ii)   target:   the Event Target is 
+  3. What is an event listener?
 4. Why would we convert a NodeList into an Array?
 5. What is a component?
