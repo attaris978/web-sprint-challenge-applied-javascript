@@ -4,7 +4,7 @@ const clAdd = (elemArray,classArray) => elemArray.forEach( (val,ind) => val.clas
 const Card = (article) => {
   const { headline, authorPhoto, authorName } = article;
   const cardDiv = cE("div"), headlineDiv = cE("div"), authorDiv = cE("div"), imgDiv = cE("div");
-  clAdd( [cardDiv, headlineDiv, authorDiv, imgDiv], ["card", "headline", "author", "img-container"]);
+  clAdd( [cardDiv, cardDiv, headlineDiv, authorDiv, imgDiv], ["card", `${authorName.slice(0,3)}`, "headline", "author", "img-container"]);
   
   cardDiv.appendChild(headlineDiv).textContent = `${headline}`;
   cardDiv.appendChild(authorDiv).appendChild(imgDiv).appendChild(cE("img")).src = `${authorPhoto}`;

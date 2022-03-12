@@ -2,12 +2,17 @@ const cE = (elemType) => document.createElement(elemType);
 const clAss = (elemName,clName) => elemName.classList.add(clName);
 
 const Tabs = (topics) => {
+  const authorClasses = [".SIR",".BON",".PUP",".FID",".MAX"];
   const topicsDiv = cE("div");
   clAss(topicsDiv,"topics");
-  topics.forEach( val => {
+  topics.forEach( (val,ind) => {
     let topicTab = cE("div");
     clAss(topicTab,"tab");
     topicsDiv.appendChild(topicTab).textContent = val;
+    topicTab.addEventListener('click',() => {
+      document.querySelectorAll(".card").forEach(elem => elem.style.display = "none");
+      document.querySelectorAll(authorClasses[ind]).forEach(elem => elem.style.display = "flex");
+    })
   } );
   return topicsDiv;
 }
